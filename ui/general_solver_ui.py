@@ -41,7 +41,7 @@ class GeneralSolverUI(QWidget):
 
         # HEADER: Title Left, Back Button Right (Same as your other apps)
         header = QHBoxLayout()
-        title = QLabel("General Linear Programming")
+        title = QLabel("General Integer Programming")
         title.setStyleSheet("font-size:28px; font-weight:700;")
 
         self.back_btn = QPushButton("← Back")

@@ -1,6 +1,4 @@
 import pulp
-
-
 def solve_general_lp(num_vars, objective, constraints, maximize=True):
     sense = pulp.LpMaximize if maximize else pulp.LpMinimize
     prob = pulp.LpProblem("General_Solver", sense)

@@ -1,6 +1,4 @@
 import pulp
-
-
 def solve_job_sequencing(jobs, deadlines, profits):
     n = len(jobs)
     max_deadline = max(deadlines)

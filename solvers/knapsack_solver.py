@@ -1,6 +1,4 @@
 import pulp
-
-
 def solve_knapsack(weights, profits, capacity):
     n = len(weights)
 

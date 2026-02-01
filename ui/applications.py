@@ -37,7 +37,7 @@ class ApplicationsScreen(QWidget):
         # ---- General Equation Solver (FIRST) ----
         cards.addWidget(self.card(
             "General Equation Solver",
-            "Solve linear equations with\n2 or 3 decision variables",
+            "Solve linear equations with\n2 decision variables",
             lambda: stack.setCurrentWidget(stack.general_solver)
         ))
 
