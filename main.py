@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-import solvers
+import integer_solver
+import knapsack_solver
+import job_sequencing_solver
 
 # ─── Design Tokens ────────────────────────────────────────────────────────────
 BG          = "#F0F6FF"          # Page background (very light blue-white)
@@ -433,7 +435,7 @@ class GeneralSolverPage(tk.Frame):
                 rhs.append(float(row[-1].get()))
 
             is_max = self.opt_type.get() == "Maximize"
-            ip_solver = solvers.IntegerSolver(v_count, len(constraints), obj,
+            ip_solver = integer_solver.IntegerSolver(v_count, len(constraints), obj,
                                               constraints, rhs, is_max)
             int_solution, int_val = ip_solver.solve()
             initial_lp_solver = ip_solver.history_of_solvers[0]
@@ -638,8 +640,8 @@ class KnapsackPage(tk.Frame):
             capacity = float(self.capacity_entry.get())
             items = [(float(v.get()), float(w.get()), i+1)
                      for i, (v, w) in enumerate(self.entries)]
-            g_val, g_items = solvers.KnapsackSolver.solve_greedy(items, capacity)
-            dp_val, dp_items = solvers.KnapsackSolver.solve_dp(items, int(capacity))
+            g_val, g_items = knapsack_solver.KnapsackSolver.solve_greedy(items, capacity)
+            dp_val, dp_items = knapsack_solver.KnapsackSolver.solve_dp(items, int(capacity))
 
             if self.results_frame:
                 self.results_frame.destroy()
@@ -755,7 +757,7 @@ class JobSequencingPage(tk.Frame):
         try:
             jobs = [(i+1, float(p.get()), int(d.get()))
                     for i, (p, d) in enumerate(self.entries)]
-            profit, sequence = solvers.JobSequencingSolver.solve(jobs)
+            profit, sequence = job_sequencing_solver.JobSequencingSolver.solve(jobs)
 
             if self.results_frame:
                 self.results_frame.destroy()
